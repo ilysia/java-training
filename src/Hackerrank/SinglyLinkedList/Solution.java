@@ -66,7 +66,40 @@ public class Solution {
      *
      */
     static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
-        return null;
+        SinglyLinkedListNode mergedList;
+
+        if (head1 == null) return head2;
+        if (head2 == null) return head1;
+
+        if (head1.data < head2.data) {
+            mergedList = head1;
+            head1 = head1.next;
+        } else {
+            mergedList = head2;
+            head2 = head2.next;
+        }
+
+        SinglyLinkedListNode p = mergedList;
+
+        while (head1 != null && head2 != null) {
+            if (head1.data < head2.data) {
+                p.next = head1;
+                p = p.next;
+                head1 = head1.next;
+            } else {
+                p.next = head2;
+                p = p.next;
+                head1 = head2.next;
+            }
+        }
+
+        if (head1 == null) {
+            p.next = head2;
+        } else {
+            p.next = head1;
+        }
+
+        return mergedList;
     }
 
     private static final Scanner scanner = new Scanner(System.in);
