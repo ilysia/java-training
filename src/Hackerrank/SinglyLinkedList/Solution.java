@@ -65,6 +65,7 @@ public class Solution {
      * }
      *
      */
+
     static SinglyLinkedListNode mergeLists(SinglyLinkedListNode head1, SinglyLinkedListNode head2) {
         SinglyLinkedListNode mergedList;
 
@@ -89,7 +90,7 @@ public class Solution {
             } else {
                 p.next = head2;
                 p = p.next;
-                head1 = head2.next;
+                head2 = head2.next;
             }
         }
 
